@@ -5,13 +5,10 @@ inputs:
     description: devopsellence API token
     required: true
 runs:
-  using: composite
-  steps:
-    - name: Install devopsellence CLI
-      shell: bash
-      run: curl -fsSL https://devopsellence.com/lfg.sh | sh
-    - name: Deploy
-      shell: bash
-      env:
-        DEVOPSELLENCE_TOKEN: ${{ inputs.token }}
-      run: devopsellence deploy --non-interactive
+  using: docker
+  image: docker://ghcr.io/elvinefendi/devopsellence-deploy-action:latest
+  env:
+    DEVOPSELLENCE_TOKEN: ${{ inputs.token }}
+  args:
+    - deploy
+    - --non-interactive
