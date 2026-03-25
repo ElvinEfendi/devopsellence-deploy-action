@@ -19,7 +19,7 @@ This creates the config file with your organization, project, environment, port,
 In your terminal, run:
 
 ```bash
-devopsellence token create --name github-actions
+devopsellence token --name github-actions
 ```
 
 Copy the token — it will not be shown again.
